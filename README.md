@@ -18,3 +18,10 @@ npm install --global yarn
 yarn create next-app
 
 ```
+
+> 3. Running first next-app
+```sh
+
+yarn run dev
+
+```
