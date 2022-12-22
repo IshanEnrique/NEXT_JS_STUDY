@@ -8,6 +8,10 @@
   
 }
 
+.main p{
+  margin: 2rem 1rem;
+}
+
 .description {
   display: inherit;
   justify-content: center;
