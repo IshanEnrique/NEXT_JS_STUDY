@@ -1,15 +1,16 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: 6rem;
+  padding: 3rem 3rem;
   min-height: 100vh;
+  
 }
 
 .description {
   display: inherit;
-  justify-content: inherit;
+  justify-content: center;
   align-items: inherit;
   font-size: 0.85rem;
   max-width: var(--max-width);
@@ -29,6 +30,7 @@
   position: relative;
   margin: 0;
   padding: 1rem;
+  margin-top: 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);
   border: 1px solid rgba(var(--callout-border-rgb), 0.3);
   border-radius: var(--border-radius);
@@ -275,4 +277,29 @@
   to {
     transform: rotate(0deg);
   }
+}
+
+.mainnav ul{
+  display: flex;
+  justify-content: center;
+  background-color: #474747c7;  
+  padding: 25px;
+}
+.mainnav ul li{
+  margin: 0 24px;
+  list-style: none;
+  font-weight: bold;
+  color: wheat;
+  cursor: pointer;
+}
+
+.blogs h3{
+  margin-top: 2rem;
+}
+.blogs h2{
+  margin-top: 2rem;
+}
+
+.blogItem p{
+  margin-top: 1rem;
 }
