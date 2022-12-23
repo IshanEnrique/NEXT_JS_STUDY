@@ -2,6 +2,7 @@ import React from 'react'
 import styles from "styles/Home.module.css";
 import Link from 'next/link';
 import Head from 'next/head';
+import Image from "next/image";
 
 const Navbar = () => {
   return (
@@ -24,6 +25,7 @@ const Navbar = () => {
           <Link href='/contact'><li>Contact</li></Link>
         </ul>
       </nav>
+      {/* <Image className={styles.homeImg} src="/homeimg.avif" layout="fill" alt="Home image"/> */}
     </>
   )
 }

@@ -299,6 +299,7 @@
 
 .blogs h3{
   margin-top: 2rem;
+  cursor: pointer;
 }
 .blogs h2{
   margin-top: 2rem;
@@ -306,4 +307,16 @@
 
 .blogItem p{
   margin-top: 1rem;
+}
+.blogItem h3{
+  color: red;
+  
+}
+
+.homeImg{
+  /* height: 100% !important;
+  width: 38% !important;
+  border-radius: 5px; */
+  margin: 5.4% 0 0 0 !important;
+  opacity: 0.5;
 }
