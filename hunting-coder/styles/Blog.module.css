@@ -2,3 +2,9 @@
     display: flex;
     margin: 0 0 2rem 12rem;
 }
+
+.readMore{
+    font-weight: bold !important;
+    color: blue !important;
+    /* cursor: pointer !important; */
+  }
