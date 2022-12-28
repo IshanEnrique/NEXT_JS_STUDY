@@ -18,7 +18,6 @@ const Slug = (props) => {
 }
 
 export async function getServerSideProps(context){
-  
   let { slug } = context.query;
   let data= await  fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
   let allBlogs= await data.json();
