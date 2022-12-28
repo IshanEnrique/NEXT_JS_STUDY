@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import React, {  useState } from 'react'
 import blogPost from "../../styles/BlogPost.module.css";
 // Step 1 : Find the file to the slug
 // Step 2 : Populate them on page
-const Slug = () => {
-  const router = useRouter();
-  let { slug } = router.query;
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    if(!router.isReady) return;
-    fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
-      .then((a) => {
-        return a.json();
-      })
-      .then((parsed) => {
-        console.log(parsed);
-        setBlogs(parsed);
-      });
-  }, [router.isReady])
+const Slug = (props) => {
+  const [blogs, setBlogs] = useState(props.allBlogs);
   return (
     <div className={blogPost.conainer} >
       <main className={blogPost.main}>
@@ -29,6 +15,16 @@ const Slug = () => {
       </main>
     </div>
   )
+}
+
+export async function getServerSideProps(context){
+  
+  let { slug } = context.query;
+  let data= await  fetch(`http://localhost:3000/api/getblog?slug=${slug}`)
+  let allBlogs= await data.json();
+  return {
+    props: {allBlogs}
+  }
 }
 
 export default Slug
