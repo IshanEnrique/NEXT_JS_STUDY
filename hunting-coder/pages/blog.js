@@ -5,19 +5,23 @@ import Link from 'next/link';
 // Step 1 : Collect all the files from blogdata directory
 // Step 2 : Iterate through them and Display
 
-const Blog = () => {
+const Blog = (props) => {
 
-  const [blogs, setBlogs] = useState([]);
-  useEffect(() => {
-    fetch("http://localhost:3000/api/blogs")
-      .then((a) => {
-        return a.json();
-      })
-      .then((parsed) => {
-        console.log(parsed);
-        setBlogs(parsed);
-      });
-  }, [])
+  const [blogs, setBlogs] = useState(props.allBlogs);
+
+  // GETTING DATA FOR RENDERING USING SERVER SIDE RENDERING 
+
+
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/api/blogs")
+  //     .then((a) => {
+  //       return a.json();
+  //     })
+  //     .then((parsed) => {
+  //       console.log(parsed);
+  //       setBlogs(parsed);
+  //     });
+  // }, [])
 
   return (
     <>
@@ -48,6 +52,16 @@ const Blog = () => {
       </main>
     </>
   )
+}
+
+// SERVER SIDE RENDERING 
+export async function getServerSideProps(context){
+
+  let data=await fetch("http://localhost:3000/api/blogs");
+  let allBlogs=await data.json();
+  return {
+    props:{allBlogs}
+  }
 }
 
 export default Blog
