@@ -25,3 +25,10 @@ yarn create next-app
 yarn run dev
 
 ```
+
+> 4. Install UUID-V4 for unique id generation
+```sh
+
+npm install uuidv4
+
+```
