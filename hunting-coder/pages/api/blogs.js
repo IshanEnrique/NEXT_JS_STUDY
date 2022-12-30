@@ -23,7 +23,7 @@ export default async function handler(
     }
     
     let completeRecordSize=allBlogs.length;
-    console.log("API page No "+pageNo+" Complete Record Size :"+completeRecordSize);
+    
     if(pageNo && pageNo<=completeRecordSize){
         pageNo=parseInt(pageNo);
     }else{

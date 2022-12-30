@@ -13,18 +13,18 @@ const Blog = () => {
   // const [fetchSize, setFetchSize] = useState();
   const [completeRecordSize, setCompleteRecordSize] = useState(pageNo+2);
   let fetchData = async () => {
-    console.log("Fetch more")
+    
     let data = await fetch(`http://localhost:3000/api/blogs?pageNo=${pageNo+2}`);
     let dataBlogs = await data.json();
     setPageNo(pageNo+2);
     setBlogs(dataBlogs.allBlogs)
     setCompleteRecordSize(dataBlogs.completeRecordSize);
-    console.log("page No  : "+pageNo+", Complete Record : "+dataBlogs.completeRecordSize+" , completeState : "+completeRecordSize);
+    
    
     
   };
 useEffect(() => {
-  console.log("UseEffect ")
+  
   return async () => {
     let data = await fetch(`http://localhost:3000/api/blogs?pageNo=${pageNo}`);
     let dataBlogs = await data.json();
