@@ -46,7 +46,7 @@ const Contact = () => {
         <div className={styles.mb3}>
           <label htmlFor="email" className={styles.formLabel}>Email Your address</label>
           <input type="email" className={styles.input}  value={contact.email} onChange={handleOnChange} required id="email" name='email' aria-describedby="emailHelp" />
-          <div id="emailHelp" className={styles.formText}>We'll never share your email with anyone else.</div>
+          <div id="emailHelp" className={styles.formText}>We&apos;ll never share your email with anyone else.</div>
         </div>
         <div className={styles.mb3}>
           <label htmlFor="mobile" className={styles.formLabel}>Enter Your Mobile</label>
