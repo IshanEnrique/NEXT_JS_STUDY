@@ -41,24 +41,24 @@ const Contact = () => {
       <form onSubmit={handleSubmit}>
         <div className={styles.mb3}>
           <label htmlFor="name" className={styles.formLabel}>Enter Your Name</label>
-          <input type="text" className={styles.input} value={contact.name} onChange={handleOnChange} id="name" name='name' />
+          <input type="text" className={styles.input} value={contact.name} onChange={handleOnChange} required id="name" name='name' />
         </div>
         <div className={styles.mb3}>
           <label htmlFor="email" className={styles.formLabel}>Email Your address</label>
-          <input type="email" className={styles.input}  value={contact.email} onChange={handleOnChange} id="email" name='email' aria-describedby="emailHelp" />
+          <input type="email" className={styles.input}  value={contact.email} onChange={handleOnChange} required id="email" name='email' aria-describedby="emailHelp" />
           <div id="emailHelp" className={styles.formText}>We'll never share your email with anyone else.</div>
         </div>
         <div className={styles.mb3}>
           <label htmlFor="mobile" className={styles.formLabel}>Enter Your Mobile</label>
-          <input type="phone" className={styles.input}  value={contact.mobile} onChange={handleOnChange} id="mobile" name='mobile' />
+          <input type="phone" className={styles.input}  value={contact.mobile} onChange={handleOnChange} required id="mobile" name='mobile' />
         </div>
         <div className={styles.mb3}>
           <label htmlFor="subject" className={styles.formLabel}>Subject</label>
-          <input type="text" className={styles.input}  value={contact.subject} onChange={handleOnChange} id="subject" name='subject' />
+          <input type="text" className={styles.input}  value={contact.subject} onChange={handleOnChange} required id="subject" name='subject' />
         </div>
         <div className={styles.mb3}>
           <label htmlFor="description" className={styles.formLabel}>Description</label>
-          <textarea className={styles.input}  value={contact.description} onChange={handleOnChange} id="description" name='description' rows="3" />
+          <textarea className={styles.input}  value={contact.description} onChange={handleOnChange} required id="description" name='description' rows="3" />
         </div>
         <button  type="submit" className={styles.btn}>Submit</button>
       </form>

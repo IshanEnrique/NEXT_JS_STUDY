@@ -321,3 +321,12 @@
   opacity: 0.5;
 }
 
+@media screen and (max-width: 600px) {
+  .mainnav ul li{
+    margin: 0 6px;
+    list-style: none;
+    font-weight: bold;
+    color: wheat;
+    cursor: pointer;
+  }
+}

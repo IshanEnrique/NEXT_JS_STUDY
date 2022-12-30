@@ -8,3 +8,10 @@
     color: blue !important;
     /* cursor: pointer !important; */
   }
+
+  @media screen and (max-width: 600px) {
+    .blogBody{
+        display: flex;
+        margin: 0 0 2rem 1.5rem;
+    }
+  }

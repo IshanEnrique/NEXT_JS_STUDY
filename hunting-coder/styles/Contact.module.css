@@ -35,3 +35,10 @@
     font-size: 17px;
     margin-bottom: 9px;
 }
+
+@media screen and (max-width: 600px) {
+    .container{
+        max-width: 75vw !important;
+        margin: auto;
+    }
+  }
