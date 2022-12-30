@@ -12,6 +12,7 @@ export default async function handler(
     let data = await fs.promises.readdir("blogdata");
     let myFile;
     let allBlogs = [];
+    let pageNo=req.query.pageNo;
     for (let i = 0; i < data.length; i++) {
         let element = data[i];
         let slug=element.slice(0,element.lastIndexOf("."));
@@ -20,5 +21,14 @@ export default async function handler(
         jsonFile.slug=slug;
         allBlogs.push(jsonFile);
     }
-    res.status(200).json(allBlogs);
+    
+    let completeRecordSize=allBlogs.length;
+    console.log("API page No "+pageNo+" Complete Record Size :"+completeRecordSize);
+    if(pageNo && pageNo<=completeRecordSize){
+        pageNo=parseInt(pageNo);
+    }else{
+        pageNo=completeRecordSize;
+    }
+    allBlogs=allBlogs.slice(0,pageNo);
+    res.status(200).json({allBlogs,pageNo,completeRecordSize});
 }

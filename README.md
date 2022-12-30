@@ -32,3 +32,9 @@ yarn run dev
 npm install uuidv4
 
 ```
+> 5. Install Infinite Scroll dependency
+```sh
+
+yarn add react-infinite-scroll-component
+
+```
