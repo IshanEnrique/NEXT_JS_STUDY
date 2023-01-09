@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Codeswear.com - Wear the <code/>
 
 ## Getting Started
 
-First, run the development server:
+> 1. Create the next app using below command and provide the basic details needed to create the app
 
 ```bash
-npm run dev
-# or
-yarn dev
+
+yarn create next-app
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> 2. Install tailwind css
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+yarn add -D tailwindcss postcss autoprefixer
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+> 3. Initiate tailwind css
 
-## Learn More
+```bash
 
-To learn more about Next.js, take a look at the following resources:
+yarn tailwindcss init -p
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> 4. Paste the following into tailwind.config.js file
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```bash
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+```
+
+> 5. Add the Tailwind directives to your CSS
+Add the @tailwind directives for each of Tailwind’s layers to your ./styles/globals.css file.
+
+```bash
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+```
+
+> 5. Add the extension in VS code
+Add the @tailwind directives for each of Tailwind’s layers to your ./styles/globals.css file.
+
+```bash
+
+Tailwind CSS IntelliSense
+
+```
