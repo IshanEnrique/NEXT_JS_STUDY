@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 import { Inter } from '@next/font/google'
 
 
@@ -14,8 +15,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     This is codeswear
-     <div className="mx-4 bg-blue-200">This is me</div>
+     
+      <Navbar/>
+        <div >
+          <img className='w-full h-full' src="/images/home.webp" alt="Home background" />
+        </div>
+      <Footer />
     </>
   )
 }
