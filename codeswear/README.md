@@ -65,3 +65,12 @@ Add the @tailwind directives for each of Tailwind’s layers to your ./styles/gl
 Tailwind CSS IntelliSense
 
 ```
+
+> 6. Add the React icons
+
+
+```bash
+
+yarn add react-icons --save
+
+```
