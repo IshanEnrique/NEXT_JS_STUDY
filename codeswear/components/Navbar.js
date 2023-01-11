@@ -9,12 +9,12 @@ const Navbar = () => {
             <div className="logo">
                 <Image src="/images/logo.png" alt="CodesWear" width={150} height={20} />
             </div>
-            <div className="nav">
-                <ul className="flex items-center space-x-2 font-bold md:text-xl top-2">
-                    <Link legacyBehavior href={"/"}><a><li>T-Shirts</li></a></Link>
-                    <Link legacyBehavior href={"/"}><a><li>Hoodies</li></a></Link>
-                    <Link legacyBehavior href={"/"}><a><li>Mugs</li></a></Link>
-                    <Link legacyBehavior href={"/"}><a><li>Stickers</li></a></Link>
+            <div className="nav ml-3">
+                <ul className="flex items-center space-x-4 font-bold md:text-md top-2">
+                    <Link legacyBehavior href={"/tshirts"}><a><li>T-Shirts</li></a></Link>
+                    <Link legacyBehavior href={"/hoodies"}><a><li>Hoodies</li></a></Link>
+                    <Link legacyBehavior href={"/mugs"}><a><li>Mugs</li></a></Link>
+                    <Link legacyBehavior href={"/stickers"}><a><li>Stickers</li></a></Link>
                 </ul>
             </div>
             <div className="cart absolute right-0 top-2 mx-5">
