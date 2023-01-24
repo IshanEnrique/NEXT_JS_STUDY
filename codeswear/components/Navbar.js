@@ -3,9 +3,21 @@ import Link from 'next/link'
 import React, { useRef } from 'react'
 import { AiFillCloseSquare, AiOutlineShoppingCart, AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import { BsFillBagCheckFill } from 'react-icons/bs'
-
+import { actionCreators } from "../pages/state/index"
+import { bindActionCreators } from 'redux'
+import { useDispatch } from 'react-redux'
 
 const Navbar = () => {
+    const dispatch= useDispatch();
+    const { addToCart, removeFromCart } = bindActionCreators(actionCreators, dispatch);
+    const product = {
+        productCode: "t-shirt-0001",
+        qty: 1,
+        price: 499,
+        name: "T-Shirts",
+        size: "M",
+        vairant: "Black"
+    }
     const toggleCart = () => {
         if (ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.remove("translate-x-full");
@@ -42,9 +54,13 @@ const Navbar = () => {
                     <li>
                         <div className="item flex my-3">
                             <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
+                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' onClick={() => {
+                                removeFromCart(product.productCode,product.qty,product.price,product.name,product.size,product.vairant)
+                            }} />
                                 <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
+                                <AiFillPlusCircle className='cursor-pointer text-green-600' onClick={()=>{
+                                    addToCart(product.productCode,product.qty,product.price,product.name,product.size,product.vairant)
+                                }} /></div>
                         </div>
                     </li>
                     <li>

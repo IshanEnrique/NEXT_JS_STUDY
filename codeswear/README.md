@@ -75,11 +75,29 @@ yarn add react-icons --save
 
 ```
 
-> 6. Code Input data pin or password
+> 7. Code Input data pin or password
 
 
 ```bash
 
 yarn add react-code-input --save
+
+```
+
+> 8. Install redux
+
+
+```bash
+
+yarn add next-redux-wrapper redux react-redux redux-thunk redux-devtools-extension
+
+```
+
+> 9. Install redux
+
+
+```bash
+
+yarn add @reduxjs/toolkit
 
 ```
