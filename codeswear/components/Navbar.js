@@ -10,7 +10,7 @@ const Navbar = () => {
         if (ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.remove("translate-x-full");
             ref.current.classList.add("translate-x-0");
-        } else {
+        } else if (!ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.add("translate-x-full");
             ref.current.classList.remove("translate-x-0");
         }

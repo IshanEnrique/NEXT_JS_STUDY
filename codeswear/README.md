@@ -74,3 +74,12 @@ Tailwind CSS IntelliSense
 yarn add react-icons --save
 
 ```
+
+> 6. Code Input data pin or password
+
+
+```bash
+
+yarn add react-code-input --save
+
+```
