@@ -1,23 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { AiFillCloseSquare, AiOutlineShoppingCart, AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import { BsFillBagCheckFill } from 'react-icons/bs'
 import { actionCreators } from "../pages/state/index"
 import { bindActionCreators } from 'redux'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Navbar = () => {
-    const dispatch= useDispatch();
+    const dispatch = useDispatch();
     const { addToCart, removeFromCart } = bindActionCreators(actionCreators, dispatch);
-    const product = {
-        productCode: "t-shirt-0001",
-        qty: 1,
-        price: 499,
-        name: "T-Shirts",
-        size: "M",
-        vairant: "Black"
-    }
+    const cartList = useSelector(state=>state.cart);
+    console.log(">>>>>> cartList from state : "+JSON.stringify(cartList));
+
     const toggleCart = () => {
         if (ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.remove("translate-x-full");
@@ -50,17 +45,41 @@ const Navbar = () => {
             <div ref={ref} className="sideCart w-72 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
                 <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
                 <span onClick={toggleCart} className="absolute top-2 right-2 cursor-pointer text-2xl text-pink-500"><AiFillCloseSquare /></span>
-                <ol className='list-decimal'>
+                <ol className='list-decimal' >
+                    {
+
+
+                        cartList.cart.map((product) => {
+                        return (    <li key={product.productCode}>
+                                <div className="item flex my-3">
+                                    <div className='w-2/3 font-semibold'>{product.name} - {product.vairant}</div>
+                                    <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' onClick={() => {
+                                        removeFromCart(product.productCode, 1, product.price, product.name, product.size, product.vairant)
+                                    }} />
+                                        <span className='mx-2'>{product.qty}</span>
+                                        <AiFillPlusCircle className='cursor-pointer text-green-600' onClick={() => {
+                                            addToCart(product.productCode, 1, product.price, product.name, product.size, product.vairant)
+                                        }} /></div>
+                                </div>
+                            </li>
+                        )
+                        })
+                    }
+
+                    {/* <li>
+                        <div className="item flex my-3">
+                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
+                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
+                                <span className='mx-2'>1</span>
+                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
+                        </div>
+                    </li>
                     <li>
                         <div className="item flex my-3">
                             <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' onClick={() => {
-                                removeFromCart(product.productCode,product.qty,product.price,product.name,product.size,product.vairant)
-                            }} />
+                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
                                 <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' onClick={()=>{
-                                    addToCart(product.productCode,product.qty,product.price,product.name,product.size,product.vairant)
-                                }} /></div>
+                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
                         </div>
                     </li>
                     <li>
@@ -78,23 +97,7 @@ const Navbar = () => {
                                 <span className='mx-2'>1</span>
                                 <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
                         </div>
-                    </li>
-                    <li>
-                        <div className="item flex my-3">
-                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
-                                <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="item flex my-3">
-                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
-                                <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
-                        </div>
-                    </li>
+                    </li> */}
                 </ol>
                 <div className="flex">
 

@@ -101,3 +101,13 @@ yarn add next-redux-wrapper redux react-redux redux-thunk redux-devtools-extensi
 yarn add @reduxjs/toolkit
 
 ```
+
+> 10. REDUX DEVTOOL INSTALLATION IN BROWSER ASSISTANCE (I)->
+
+
+```bash
+
+https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
+
+```
+

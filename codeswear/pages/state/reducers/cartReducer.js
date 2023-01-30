@@ -1,4 +1,4 @@
-const defaultCart={
+const product={
     productCode: "t-shirt-0001",
     qty: 1,
     price: 499,
@@ -6,30 +6,46 @@ const defaultCart={
     size: "M",
     vairant: "Black"
 }
-const cartReducer=(cart=defaultCart,action)=>{
-    if(action.type=="addToCart"){
-        let newCart=cart;
-        let newItemCode=action.payload.productCode;
-        if(newItemCode in cart){
-            newCart[newItemCode].qty=cart[newItemCode].qty+action.payload.qty;
-        }else{
-            newCart[newItemCode]=action.payload;
-        }
-        return newCart;
-    }else if (action.type=="removeFromCart"){
 
-        let newCart=cart;
-        let newItemCode=action.payload.productCode;
-        if(newItemCode in cart){
-            newCart[newItemCode].qty=cart[newItemCode].qty-action.payload.qty;
-        }
-        if(newCart[newItemCode].qty<=0){
-            delete newCart[newItemCode];
-        }
-        return newCart;
+const defaultCart={
+    cart:[product]
+}
+const cartReducer=(state = defaultCart,action)=>{
+    const newState={...state};
     
-    }else{
-        return cart;
+    switch(action.type){
+        case "addToCart":
+          const  {productCode,qty,price,name,size,vairant}=action.payload;          
+            let ifExists=false;
+            let indexValue=0;
+            newState.cart.forEach((data,index)=>{
+                if(data.productCode==productCode)
+                {
+                    ifExists=true;
+                    indexValue=index
+                }
+            })
+            if(ifExists){
+                console.log("inside cart List >>>> product is present : "+JSON.stringify(newState.cart[indexValue]))
+                newState.cart[indexValue].qty=newState.cart[indexValue].qty+qty;
+            }else{
+                console.log("inside cart List >>>> product is not present : ")
+                return {
+                    ... newState,
+                    cart:[...newState.cart,
+                        {productCode,qty,price,name,size,vairant}
+                    ]
+                }
+            }
+        break;
+        case "removeFromCart":
+            
+        break;
+       
+        default:
+        newState;
     }
+    return newState;
+    
 }
 export default cartReducer;
