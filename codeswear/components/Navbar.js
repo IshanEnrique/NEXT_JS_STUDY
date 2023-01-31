@@ -11,8 +11,6 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const { addToCart, removeFromCart } = bindActionCreators(actionCreators, dispatch);
     const cartList = useSelector(state=>state.cart);
-    console.log(">>>>>> cartList from state : "+JSON.stringify(cartList));
-
     const toggleCart = () => {
         if (ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.remove("translate-x-full");
@@ -54,7 +52,7 @@ const Navbar = () => {
                                 <div className="item flex my-3">
                                     <div className='w-2/3 font-semibold'>{product.name} - {product.vairant}</div>
                                     <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' onClick={() => {
-                                        removeFromCart(product.productCode, 1, product.price, product.name, product.size, product.vairant)
+                                        removeFromCart(product.productCode)
                                     }} />
                                         <span className='mx-2'>{product.qty}</span>
                                         <AiFillPlusCircle className='cursor-pointer text-green-600' onClick={() => {
@@ -65,39 +63,6 @@ const Navbar = () => {
                         )
                         })
                     }
-
-                    {/* <li>
-                        <div className="item flex my-3">
-                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
-                                <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="item flex my-3">
-                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
-                                <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="item flex my-3">
-                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
-                                <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div className="item flex my-3">
-                            <div className='w-2/3 font-semibold'>T-Shirt - Wear The Code</div>
-                            <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' />
-                                <span className='mx-2'>1</span>
-                                <AiFillPlusCircle className='cursor-pointer text-green-600' /></div>
-                        </div>
-                    </li> */}
                 </ol>
                 <div className="flex">
 

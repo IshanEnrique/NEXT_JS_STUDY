@@ -14,17 +14,12 @@ export const addToCart = (productCode,qty,price,name,size,vairant) => {
         })
     }
 }
-export const removeFromCart = (productCode,qty,price,name,size,vairant) => {
+export const removeFromCart = (productCode) => {
     return (dispatch) => {
         dispatch({
             type: "removeFromCart",
             payload: {
-                productCode,
-                qty,
-                price,
-                name,
-                size,
-                vairant
+                productCode                
             }
         })
     }
