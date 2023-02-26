@@ -1,10 +1,18 @@
 const product = {
-    productCode: "t-shirt-0001",
+    productCode: "saree-0001",
     qty: 1,
-    price: 499,
-    name: "T-Shirts",
+    price: 1499,
+    name: "Saree",
     size: "M",
-    vairant: "Black"
+    vairant: "Red",
+    sources: [{
+        imgSize: "100x50",
+        imgUrl: "/images/saree/saree1.jpg"
+    },
+    {
+        imgSize: "100x50",
+        imgUrl: "/images/saree/saree1.jpg"
+    }]
 }
 
 const defaultCart = {
@@ -45,15 +53,15 @@ const cartReducer = (state = defaultCart, action) => {
                     indexVal = index;
                 }
             })
-            let isLast= newState.cart[indexVal].qty===1;
+            let isLast = newState.cart[indexVal].qty === 1;
             newState.cart[indexVal].qty -= 1;
-            if(isLast){
-              return  {
+            if (isLast) {
+                return {
                     ...newState,
-                    cart: newState.cart.filter((c)=> c.productCode!==itemCode)
+                    cart: newState.cart.filter((c) => c.productCode !== itemCode)
                 }
             }
-            
+
             break;
 
 

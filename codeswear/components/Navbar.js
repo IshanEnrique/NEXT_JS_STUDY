@@ -30,10 +30,13 @@ const Navbar = () => {
             </div>
             <div className="nav ml-3">
                 <ul className="flex items-center space-x-4 font-bold md:text-md top-2">
+                    <Link legacyBehavior href={"/sarees"}><a><li>Saree</li></a></Link>
                     <Link legacyBehavior href={"/tshirts"}><a><li>T-Shirts</li></a></Link>
                     <Link legacyBehavior href={"/hoodies"}><a><li>Hoodies</li></a></Link>
                     <Link legacyBehavior href={"/mugs"}><a><li>Mugs</li></a></Link>
                     <Link legacyBehavior href={"/sticker"}><a><li>Stickers</li></a></Link>
+                    <Link legacyBehavior href={"/about"}><a><li>About Us</li></a></Link>
+                    <Link legacyBehavior href={"/about"}><a><li>Contact Us</li></a></Link>
                 </ul>
             </div>
             <div onClick={toggleCart} className="cart absolute right-0 top-2 mx-5 cursor-pointer">

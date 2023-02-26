@@ -11,8 +11,8 @@ const Tshirts = () => {
     let tShirtsRes = await fetch("/api/get-all-products")
     if (tShirtsRes.status == 200) {
       let tshirtsJson = await tShirtsRes.json();
-      
-      setTshirts(await tshirtsJson.filter(tshirt=>tshirt.categoryCode==="T-001"));
+     
+      setTshirts(await tshirtsJson.filter(tshirt=>tshirt.categoryCode==="S-001"));
 
     } else {
       console.info(">>>>>>>>Get TShirts API Error response  : " + JSON.stringify(tShirtsRes));
@@ -24,7 +24,7 @@ const Tshirts = () => {
     getTShirts();
   }, [])
 
-  const productDetails=(product)=>{
+  const productDetails=(productCode)=>{
     
   }
   return (
@@ -36,7 +36,7 @@ const Tshirts = () => {
               tshirts.map((tshirt,index) => {
 
                 return (
-                  <Link key={tshirt.productCode} href={"/product/"+tshirt.productCode}  legacyBehavior><a><div className="lg:w-full md:w-full p-4 w-full shadow-lg m-5">
+                  <Link key={tshirt.productCode} href={"/product/"+tshirt.productCode}   legacyBehavior><a><div className="lg:w-full md:w-full p-4 w-full shadow-lg m-5">
                     <a className="block relative h-48 rounded overflow-hidden">
                       <img alt="ecommerce" className="h-[50vh] block" src={tshirt.imgUrl} />
                     </a>

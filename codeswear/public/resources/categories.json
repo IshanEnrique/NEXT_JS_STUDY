@@ -1,0 +1,26 @@
+[{
+    "cateogryName": "Saree",
+    "categoryCode": "S-001",
+    "imgUrl": "/images/products/saree1.jpg"
+  },
+  {
+    "cateogryName": "T-Shirt",
+    "categoryCode": "T-001",
+    "imgUrl": "/images/products/tshirt1.jpg"
+  },
+  {
+    "cateogryName": "Hoodie",
+    "categoryCode": "H-001",
+    "imgUrl": "/images/products/hoodies.jpg"
+  },
+  {
+    "cateogryName": "Mug",
+    "categoryCode": "M-001",
+    "imgUrl": "/images/products/hoodies.jpg"
+  },
+  {
+    "cateogryName": "Sticker",
+    "categoryCode": "ST-001",
+    "imgUrl": "/images/products/hoodies.jpg"
+  }
+  ]
