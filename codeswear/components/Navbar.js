@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCloseSquare, AiOutlineShoppingCart, AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
 import { BsFillBagCheckFill, BsFillCartXFill } from 'react-icons/bs'
 import { actionCreators } from "../pages/state/index"
@@ -21,6 +21,23 @@ const Navbar = () => {
         }
     }
     const ref = useRef();
+const [productList, setProductList] = useState([])
+    const getProductList = async () => {
+        let categoriesRes = await fetch("/api/get-all-categories")
+        if (categoriesRes.status == 200) {
+            let categoriesJson = await categoriesRes.json();
+
+            setProductList(categoriesJson);
+
+        } else {
+            console.info(">>>>>>>>Get All Categories API Error response  : " + JSON.stringify(categoriesRes));
+
+        }
+    }
+
+    useEffect(() => {
+        getProductList();
+    }, [])
     return (
         <div className='flex flex-col md:flex-row md:justify-start justify-center items-center shadow-md'>
             <div className="logo">
@@ -30,11 +47,19 @@ const Navbar = () => {
             </div>
             <div className="nav ml-3">
                 <ul className="flex items-center space-x-4 font-bold md:text-md top-2">
-                    <Link legacyBehavior href={"/sarees"}><a><li>Saree</li></a></Link>
+                    {
+                        
+                        productList.map((categories,index)=> {
+
+                          return ( <Link key={index} legacyBehavior href={categories.href}><a><li>{categories.cateogryName}</li></a></Link>
+                          )
+                        })
+                    }
+                    {/* <Link legacyBehavior href={"/sarees"}><a><li>Saree</li></a></Link>
                     <Link legacyBehavior href={"/tshirts"}><a><li>T-Shirts</li></a></Link>
                     <Link legacyBehavior href={"/hoodies"}><a><li>Hoodies</li></a></Link>
                     <Link legacyBehavior href={"/mugs"}><a><li>Mugs</li></a></Link>
-                    <Link legacyBehavior href={"/sticker"}><a><li>Stickers</li></a></Link>
+                    <Link legacyBehavior href={"/sticker"}><a><li>Stickers</li></a></Link> */}
                     <Link legacyBehavior href={"/about"}><a><li>About Us</li></a></Link>
                     <Link legacyBehavior href={"/about"}><a><li>Contact Us</li></a></Link>
                 </ul>
@@ -47,21 +72,21 @@ const Navbar = () => {
                 <h2 className="font-bold text-xl text-center">Your Cart</h2>
                 <span onClick={toggleCart} className="absolute top-2 right-2 cursor-pointer text-2xl text-pink-500"><AiFillCloseSquare /></span>
                 <ol className='list-decimal' >
-                   
-                    {
-                        
-                        (!cartList || !cartList.cart || cartList.cart.length===0) &&
-                        <div>
-                             <BsFillCartXFill className='text-red-700 md:h-14 md:w-14 lg:h-28 lg:w-28 lg:mt-5 lg:mb-5 lg:ml-5' />
-                             <span className='text-red-800 font-bold'>Sorry! Your cart is empty.</span>
 
-                         </div>
+                    {
+
+                        (!cartList || !cartList.cart || cartList.cart.length === 0) &&
+                        <div>
+                            <BsFillCartXFill className='text-red-700 md:h-14 md:w-14 lg:h-28 lg:w-28 lg:mt-5 lg:mb-5 lg:ml-5' />
+                            <span className='text-red-800 font-bold'>Sorry! Your cart is empty.</span>
+
+                        </div>
                     }
 
                     {
-                        
 
-                        cartList && cartList.cart.length>0 && cartList.cart.map((product) => {
+
+                        cartList && cartList.cart.length > 0 && cartList.cart.map((product) => {
                             return (<li key={product.productCode}>
                                 <div className="item flex my-3">
                                     <div className='w-2/3 font-semibold'>{product.name} - {product.vairant}</div>

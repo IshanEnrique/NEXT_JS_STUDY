@@ -1,25 +1,30 @@
 [{
     "cateogryName": "Saree",
+    "href": "/sarees",
     "categoryCode": "S-001",
     "imgUrl": "/images/products/saree1.jpg"
   },
   {
     "cateogryName": "T-Shirt",
+    "href": "/tshirts",
     "categoryCode": "T-001",
     "imgUrl": "/images/products/tshirt1.jpg"
   },
   {
     "cateogryName": "Hoodie",
+    "href": "/hoodies",
     "categoryCode": "H-001",
     "imgUrl": "/images/products/hoodies.jpg"
   },
   {
     "cateogryName": "Mug",
+    "href": "/mugs",
     "categoryCode": "M-001",
     "imgUrl": "/images/products/hoodies.jpg"
   },
   {
     "cateogryName": "Sticker",
+    "href": "/sticker",
     "categoryCode": "ST-001",
     "imgUrl": "/images/products/hoodies.jpg"
   }

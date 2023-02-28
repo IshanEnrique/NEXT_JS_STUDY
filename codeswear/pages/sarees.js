@@ -27,7 +27,7 @@ const Tshirts = () => {
     }
   }
   
- useState
+ 
 
   useEffect(() => {
     getTShirts();
