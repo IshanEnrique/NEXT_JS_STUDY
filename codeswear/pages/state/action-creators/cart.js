@@ -24,3 +24,14 @@ export const removeFromCart = (productCode) => {
         })
     }
 }
+
+export const removeFromCartCompletly=(productCode)=>{
+    return (dispatch) => {
+        dispatch({
+            type: "removeFromCartCompletly",
+            payload: {
+                productCode                
+            }
+        })
+    }
+}

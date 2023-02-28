@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useRef } from 'react'
 import { AiFillCloseSquare, AiOutlineShoppingCart, AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
-import { BsFillBagCheckFill } from 'react-icons/bs'
+import { BsFillBagCheckFill, BsFillCartXFill } from 'react-icons/bs'
 import { actionCreators } from "../pages/state/index"
 import { bindActionCreators } from 'redux'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const Navbar = () => {
     const dispatch = useDispatch();
     const { addToCart, removeFromCart } = bindActionCreators(actionCreators, dispatch);
-    const cartList = useSelector(state=>state.cart);
+    const cartList = useSelector(state => state.cart);
     const toggleCart = () => {
         if (ref.current.classList.contains('translate-x-full')) {
             ref.current.classList.remove("translate-x-full");
@@ -44,14 +44,25 @@ const Navbar = () => {
             </div>
 
             <div ref={ref} className="sideCart w-72 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
-                <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
+                <h2 className="font-bold text-xl text-center">Your Cart</h2>
                 <span onClick={toggleCart} className="absolute top-2 right-2 cursor-pointer text-2xl text-pink-500"><AiFillCloseSquare /></span>
                 <ol className='list-decimal' >
+                   
                     {
+                        
+                        (!cartList || !cartList.cart || cartList.cart.length===0) &&
+                        <div>
+                             <BsFillCartXFill className='text-red-700 md:h-14 md:w-14 lg:h-28 lg:w-28 lg:mt-5 lg:mb-5 lg:ml-5' />
+                             <span className='text-red-800 font-bold'>Sorry! Your cart is empty.</span>
 
+                         </div>
+                    }
 
-                        cartList.cart.map((product) => {
-                        return (    <li key={product.productCode}>
+                    {
+                        
+
+                        cartList && cartList.cart.length>0 && cartList.cart.map((product) => {
+                            return (<li key={product.productCode}>
                                 <div className="item flex my-3">
                                     <div className='w-2/3 font-semibold'>{product.name} - {product.vairant}</div>
                                     <div className='flex items-center justify-center w-1/3 font-semibold text-lg'><AiFillMinusCircle className='cursor-pointer text-red-600' onClick={() => {
@@ -63,15 +74,16 @@ const Navbar = () => {
                                         }} /></div>
                                 </div>
                             </li>
-                        )
+                            )
                         })
+
                     }
                 </ol>
-                <div className="flex">
+                {cartList && cartList.size > 0 && <div className="flex">
 
                     <button className="flex mx-2 mt-5 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"><BsFillBagCheckFill className='m-1' /> Checkout</button>
                     <button className="flex mx-2 mt-5 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
-                </div>
+                </div>}
             </div>
         </div>
     )

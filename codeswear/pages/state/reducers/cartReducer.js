@@ -16,13 +16,14 @@ const product = {
 }
 
 const defaultCart = {
-    cart: [product]
+    cart: []
 }
 const cartReducer = (state = defaultCart, action) => {
     const newState = { ...state };
 
     switch (action.type) {
         case "addToCart":
+            console.log(">>>>>>>>> "+action.payload.productCode)
             const { productCode, qty, price, name, size, vairant } = action.payload;
             let ifExists = false;
             let indexValue = 0;
@@ -43,6 +44,7 @@ const cartReducer = (state = defaultCart, action) => {
                 }
             }
             break;
+
         case "removeFromCart":
             const itemCode = action.payload.productCode;
             let ifExist = false;
@@ -63,6 +65,16 @@ const cartReducer = (state = defaultCart, action) => {
             }
 
             break;
+
+            case "removeFromCartCompletly":
+                const codeToRemove = action.payload.productCode;                
+                    return {
+                        ...newState,
+                        cart: newState.cart.filter((c) => c.productCode !== codeToRemove)
+                    }
+                
+    
+                break;
 
 
         default:
