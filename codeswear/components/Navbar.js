@@ -100,9 +100,9 @@ const [productList, setProductList] = useState([])
 
                     }
                 </ol>
-                {cartList && cartList.size > 0 && <div className="flex">
+                {cartList && cartList.cart.length > 0 && <div className="flex">
 
-                    <button className="flex mx-2 mt-5 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"><BsFillBagCheckFill className='m-1' /> Checkout</button>
+                    <Link href={"/checkout"} className="flex mx-2 mt-5 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm"><BsFillBagCheckFill className='m-1' /> Checkout</Link>
                     <button className="flex mx-2 mt-5 text-white bg-indigo-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-600 rounded text-sm">Clear Cart</button>
                 </div>}
             </div>
