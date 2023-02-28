@@ -39,7 +39,7 @@ const [productList, setProductList] = useState([])
         getProductList();
     }, [])
     return (
-        <div className='flex flex-col md:flex-row md:justify-start justify-center items-center shadow-md'>
+        <div className='flex flex-col md:flex-row md:justify-start justify-center items-center shadow-md sticky top-0 z-10 bg-white'>
             <div className="logo">
                 <Link legacyBehavior href={"/"}>
                     <a> <Image src="/images/logo.png" alt="CodesWear" width={150} height={20} /></a>
@@ -55,11 +55,7 @@ const [productList, setProductList] = useState([])
                           )
                         })
                     }
-                    {/* <Link legacyBehavior href={"/sarees"}><a><li>Saree</li></a></Link>
-                    <Link legacyBehavior href={"/tshirts"}><a><li>T-Shirts</li></a></Link>
-                    <Link legacyBehavior href={"/hoodies"}><a><li>Hoodies</li></a></Link>
-                    <Link legacyBehavior href={"/mugs"}><a><li>Mugs</li></a></Link>
-                    <Link legacyBehavior href={"/sticker"}><a><li>Stickers</li></a></Link> */}
+                    
                     <Link legacyBehavior href={"/about"}><a><li>About Us</li></a></Link>
                     <Link legacyBehavior href={"/about"}><a><li>Contact Us</li></a></Link>
                 </ul>
@@ -68,7 +64,7 @@ const [productList, setProductList] = useState([])
                 <AiOutlineShoppingCart className='text-xl md:text-3xl' />
             </div>
 
-            <div ref={ref} className="sideCart w-72 h-full absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
+            <div ref={ref} className="sideCart w-72 h-[100vh] absolute top-0 right-0 bg-pink-100 px-8 py-10 transform transition-transform translate-x-full">
                 <h2 className="font-bold text-xl text-center">Your Cart</h2>
                 <span onClick={toggleCart} className="absolute top-2 right-2 cursor-pointer text-2xl text-pink-500"><AiFillCloseSquare /></span>
                 <ol className='list-decimal' >
